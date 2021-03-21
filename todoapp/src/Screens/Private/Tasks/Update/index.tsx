@@ -1,9 +1,19 @@
 import { api } from '../../../../utils/api'
 
+type UpdateTaskPayload = {
+    id: string,
+    titulo: string,
+    fecha: string,
+    descripcion: string,
+    asignada: string,
+    estado: string,
+    onTaskStatusChange: () => void
+}
 
-const Card = ({ id, titulo, fecha, descripcion, asignada, estado, onTaskStatusChange }) => {
 
-    const handleClick = (newStatus) => {
+const Update = ({ id, titulo, fecha, descripcion, asignada, estado, onTaskStatusChange }: UpdateTaskPayload) => {
+
+    const handleClick = (newStatus: string) => {
         api.patch(`/tasks/${id}.json`, { estado: newStatus })
             .then(response => {
                 if (response.statusText === 'OK') {
@@ -50,4 +60,4 @@ const Card = ({ id, titulo, fecha, descripcion, asignada, estado, onTaskStatusCh
     )
 }
 
-export { Card }
+export { Update }

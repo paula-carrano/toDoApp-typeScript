@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom'
 import { PencilFill, TrashFill } from 'react-bootstrap-icons'
 
-const TableUser = ({ dataUser, handleClickDelete }) => {
+type Props = {
+    dataUser?: UserFirebase[],
+    handleClickDelete?: (id: string) => void
+}
+
+type UserFirebase = {
+    apellido: string,
+    email: string,
+    id: string,
+    nombre: string,
+    password: string
+}
+
+const TableUser = ({ dataUser, handleClickDelete }: Props) => {
 
     return (
         <div className="table-responsive">
@@ -14,7 +27,7 @@ const TableUser = ({ dataUser, handleClickDelete }) => {
                         <th scope="col">Apellido</th>
                         <th scope="col">Correo electónico</th>
                         <th scope="col">Contraseña</th>
-                        <th colSpan="2">Actions</th>
+                        <th colSpan={2}>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,7 +40,7 @@ const TableUser = ({ dataUser, handleClickDelete }) => {
                                 <td>{email} </td>
                                 <td>{password} </td>
                                 <td><Link to={`/users/update/${id}`} className="btn btn-info" ><PencilFill /></Link></td>
-                                <td><button className="btn btn-danger" onClick={() => handleClickDelete(id)}><TrashFill /></button></td>
+                                <td><button className="btn btn-danger" onClick={handleClickDelete}><TrashFill /></button></td>
                             </tr>
                         )
                     }

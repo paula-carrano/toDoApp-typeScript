@@ -1,4 +1,6 @@
-export const objectToArray = (obj) => {
+export const objectToArray = <T>(obj: T): (T[keyof T] & {
+    id: keyof T;
+})[] => {
     let array = [];
 
     for (const prop in obj) {
@@ -6,4 +8,4 @@ export const objectToArray = (obj) => {
     }
 
     return array;
-};
+}

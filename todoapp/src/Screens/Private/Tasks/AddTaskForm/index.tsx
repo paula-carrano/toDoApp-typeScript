@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, FC } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Layout, Main } from '../../../../components'
 import './add.css'
 import { api } from '../../../../utils'
 
 
-const AddTaskForm = () => {
+const AddTaskForm: FC = () => {
     let history = useHistory();
 
     const [tareas, setTareas] = useState({
@@ -15,14 +15,13 @@ const AddTaskForm = () => {
         asignada: '',
     })
 
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<string | null>();
 
-    const handleInputChange = (event) => {
-        //console.log(event.target.name)
-        //console.log(event.target.value)
+    const handleInputChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        const { name, value } = event.currentTarget
         setTareas({
             ...tareas,
-            [event.target.name]: event.target.value
+            [name]: value
         })
     }
 
@@ -30,7 +29,7 @@ const AddTaskForm = () => {
         history.push("/tasks/list")
     }
 
-    const enviarDatos = (event) => {
+    const enviarDatos = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         //console.log('enviando datos...' + tareas.titulo + ' ' + tareas.fecha)
         //console.log(tareas.descripcion);
@@ -61,20 +60,20 @@ const AddTaskForm = () => {
                             <form className='form-agregar-tarea mt-5' onSubmit={enviarDatos}>
                                 <div className="form-group ">
                                     <label htmlFor="titulo"><b>Título</b></label>
-                                    <input type="text" name="titulo" className="form-control" id="titulo" placeholder="Título" onChange={(event) => handleInputChange(event)} />
+                                    <input type="text" name="titulo" className="form-control" id="titulo" placeholder="Título" onChange={handleInputChange} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="fecha"><b>Fecha</b></label>
-                                    <input type="date" name="fecha" className="form-control" id="fecha" placeholder="Seleccione una fecha" onChange={(event) => handleInputChange(event)} />
+                                    <input type="date" name="fecha" className="form-control" id="fecha" placeholder="Seleccione una fecha" onChange={handleInputChange} />
                                 </div>
 
                                 <div className="form-group">
                                     <label htmlFor="textarea"><b>Descripción</b></label>
-                                    <textarea className="form-control" type='text' name='descripcion' id="textarea" rows="3" onChange={(event) => handleInputChange(event)}></textarea>
+                                    <textarea className="form-control" name='descripcion' id="textarea" onChange={handleInputChange}></textarea>
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="asignada"><b>Asignada a:</b></label>
-                                    <select className="form-control" id="asignada" name='asignada' onChange={(event) => handleInputChange(event)}>
+                                    <select className="form-control" id="asignada" name='asignada' onChange={handleInputChange}>
                                         <option value='Juan Altamirano' >Juan Altamirano</option>
                                         <option value='Natalia Suarez'>Natalia Suarez</option>
                                         <option value='Gala Lantier'>Gala Lantier</option>

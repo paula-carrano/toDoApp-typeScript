@@ -1,20 +1,29 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, FC } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Layout, Main } from '../../../../components'
 import './tasks.css'
 import { tasksApi } from './api'
-import { Card } from '../Card'
+import { Update } from '../Update'
+
+type TasksStates = {
+    asignada: string,
+    descripcion: string,
+    fecha: string,
+    id: string,
+    titulo: string,
+    estado: string
+}
 
 
-const List = () => {
+const List: FC = () => {
 
     // FUNCION PARA REDIRECCIONAR EL BTN DE AGREGAR 
     const { push } = useHistory();
 
 
-    const [pendiente, setPendiente] = useState([])
-    const [realizada, setRealizada] = useState([])
-    const [cancelada, setCancelada] = useState([])
+    const [pendiente, setPendiente] = useState<TasksStates[]>([])
+    const [realizada, setRealizada] = useState<TasksStates[]>([])
+    const [cancelada, setCancelada] = useState<TasksStates[]>([])
 
     const fetchTasks = () => {
         tasksApi.get().then((response => {
@@ -41,7 +50,7 @@ const List = () => {
                                     <div className="collapse multi-collapse" id="multiCollapseExample1">
                                         <div id="task-list-one" className="task-list-items">
                                             {pendiente.map(({ asignada, descripcion, fecha, id, titulo, estado }) => (
-                                                <Card
+                                                <Update
                                                     asignada={asignada}
                                                     descripcion={descripcion}
                                                     fecha={fecha}
@@ -64,7 +73,7 @@ const List = () => {
                                     <div className="collapse multi-collapse" id="multiCollapseExample1">
                                         <div id="task-list-two" className="task-list-items">
                                             {realizada.map(({ asignada, descripcion, fecha, id, titulo, estado }) => (
-                                                <Card
+                                                <Update
                                                     asignada={asignada}
                                                     descripcion={descripcion}
                                                     fecha={fecha}
@@ -86,7 +95,7 @@ const List = () => {
                                     <div className="collapse multi-collapse" id="multiCollapseExample1">
                                         <div id="task-list-three" className="task-list-items">
                                             {cancelada.map(({ asignada, descripcion, fecha, id, titulo, estado }) => (
-                                                <Card
+                                                <Update
                                                     asignada={asignada}
                                                     descripcion={descripcion}
                                                     fecha={fecha}

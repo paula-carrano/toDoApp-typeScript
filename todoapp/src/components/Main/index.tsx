@@ -3,9 +3,9 @@ import "./styles.css";
 import { Header } from './components'
 
 interface Props {
-  title: string
-  showAddButton: boolean
-  handleClick: () => void
+  title?: string
+  showAddButton?: boolean
+  handleClick?: () => void
 }
 
 const Main: FC<Props> = ({ children, title, showAddButton, handleClick }) => {

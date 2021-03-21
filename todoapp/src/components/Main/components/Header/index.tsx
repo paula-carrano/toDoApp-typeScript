@@ -2,9 +2,9 @@ import React, { FC } from 'react';
 import "./style.css"
 
 interface Props {
-    title: string
-    showAddButton: boolean
-    handleClick: () => void
+    title?: string
+    showAddButton?: boolean
+    handleClick?: () => void
 }
 
 const Header: FC<Props> = ({ title, showAddButton = false, handleClick }) => {

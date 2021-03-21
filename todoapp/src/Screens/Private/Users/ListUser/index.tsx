@@ -1,16 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, FC } from 'react';
 import { useHistory } from 'react-router-dom'
 import { Layout, Main } from '../../../../components'
 import { TableUser } from './components'
 import { api } from '../../../../utils'
 import { UserApi } from './api'
 
-const ListUser = () => {
+type UserFirebase = {
+    apellido: string,
+    email: string,
+    id: string,
+    nombre: string,
+    password: string
+}
+
+const ListUser: FC = () => {
 
     //REDIRECCIONO EL BTN
     const { push } = useHistory();
 
-    const [dataUser, setdataUser] = useState([])
+    const [dataUser, setdataUser] = useState<UserFirebase[]>([])
 
     // OBTENGO DATOS
     const setUsers = () => {
@@ -26,7 +34,7 @@ const ListUser = () => {
 
     //BTN DELETE
 
-    const deleteUser = (id) => {
+    const deleteUser = (id: string) => {
         api.delete(`/users/${id}.json`)
             .then(() => setUsers())
     }

@@ -9,7 +9,7 @@ import { AuthContext } from "../../../../../../contexts/AuthProvider"
 
 const NavBar: FC = () => {
   const { goBack } = useHistory();
-  const { logout } = useAuth();
+  //const { logout } = useAuth();
   const { user } = useContext(AuthContext)
 
 
@@ -100,13 +100,13 @@ const NavBar: FC = () => {
                 aria-expanded="false"
               >
                 <img
-                  src={user.photoURL}
+                  // src={user.photoURL}
                   alt="user-avatar"
                   width="32"
                   className="rounded-circle ms-1 me-2"
                 />
-                {console.log(user.photoURL)}
-                {user.displayName}
+                {/* {console.log(user.photoURL)}
+                {user.displayName} */}
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
@@ -121,7 +121,7 @@ const NavBar: FC = () => {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <a className="dropdown-item" onClick={logout}>
+                  <a className="dropdown-item">
                     <BoxArrowRight /> logout</a>
                 </li>
               </ul>
