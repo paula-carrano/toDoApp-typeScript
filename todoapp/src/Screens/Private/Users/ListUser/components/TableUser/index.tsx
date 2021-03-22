@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import { PencilFill, TrashFill } from 'react-bootstrap-icons'
 
 type Props = {
-    dataUser?: UserFirebase[],
-    handleClickDelete?: (id: string) => void
+    dataUser: UserFirebase[],
+    handleClickDelete: (id: string) => void,
 }
 
 type UserFirebase = {
@@ -40,7 +40,7 @@ const TableUser = ({ dataUser, handleClickDelete }: Props) => {
                                 <td>{email} </td>
                                 <td>{password} </td>
                                 <td><Link to={`/users/update/${id}`} className="btn btn-info" ><PencilFill /></Link></td>
-                                <td><button className="btn btn-danger" onClick={handleClickDelete}><TrashFill /></button></td>
+                                <td><button className="btn btn-danger" onClick={() => handleClickDelete(id)}><TrashFill /></button></td>
                             </tr>
                         )
                     }

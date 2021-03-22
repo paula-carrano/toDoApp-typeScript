@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, FC, FormEvent } from 'react';
 import { Link } from 'react-router-dom'
-import { useAuth } from '../../../../../hooks'
+//import { useAuth } from '../../../../../hooks'
 
-const FormSignUp = () => {
+const FormSignUp: FC = () => {
 
-    const [nombreCompleto, setNombreCompleto] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [confirmpass, setConfirmPass] = useState('')
+    const [nombreCompleto, setNombreCompleto] = useState<string>("")
+    const [email, setEmail] = useState<string>('')
+    const [password, setPassword] = useState<string>('')
+    const [confirmpass, setConfirmPass] = useState<string>('')
 
-    const { register } = useAuth()
+    //const { register } = useAuth()
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        register(email, password, nombreCompleto, confirmpass)
+        //register(email, password, nombreCompleto, confirmpass)
         setNombreCompleto('')
         setEmail('')
         setPassword('')
@@ -38,7 +38,6 @@ const FormSignUp = () => {
                                         onChange={(e) => setNombreCompleto(e.target.value)}
                                         className='form-control'
                                         type='text' id='nombreCompleto'
-                                        required=''
                                         value={nombreCompleto}
                                         placeholder='Ingrese su nombre completo' />
                                 </div>
@@ -49,7 +48,6 @@ const FormSignUp = () => {
                                         className='form-control'
                                         type='email'
                                         id='emailaddress'
-                                        required=''
                                         value={email}
                                         placeholder='Ingrese su correo electrónico' />
                                 </div>

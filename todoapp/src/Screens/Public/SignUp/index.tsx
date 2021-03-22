@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Layout, Main } from '../../../components'
 import { FormSignUp } from './components/FormSignUp';
 
 
-const SignUp = () => {
+const SignUp: FC = () => {
     return (
         <Layout hideHeader hideAside>
             <Main showAddButton>
