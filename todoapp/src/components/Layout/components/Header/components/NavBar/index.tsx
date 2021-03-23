@@ -100,13 +100,11 @@ const NavBar: FC = () => {
                 aria-expanded="false"
               >
                 <img
-                  // src={user.photoURL}
+                  src={user?.photoURL === null ? undefined : user?.photoURL}
                   alt="user-avatar"
                   width="32"
                   className="rounded-circle ms-1 me-2"
                 />
-                {/* {console.log(user.photoURL)}
-                {user.displayName} */}
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>

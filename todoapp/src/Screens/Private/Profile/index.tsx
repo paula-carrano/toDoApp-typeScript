@@ -1,9 +1,9 @@
 import { Layout, Main } from '../../../components';
-import React from 'react';
+import React, { FC } from 'react';
 import { Avatar } from './Avatar';
 
 
-const Profile = () => {
+const Profile: FC = () => {
 
     return (
         <Layout>

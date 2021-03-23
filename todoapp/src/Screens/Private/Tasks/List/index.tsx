@@ -43,7 +43,7 @@ const List: FC = () => {
             <Main title="Tareas" handleClick={() => push("/tasks/add")}>
                 <div className='container mt-5'>
                     <div className='row'>
-                        <div className='col-4 col-pendiente'>
+                        <div className='col-4 col-pendiente text-center'>
                             <div className='board'>
                                 <div className="tasks">
                                     <a className="fs-5 text-decoration-none text-dark" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">PENDIENTES ({pendiente.length})</a>
@@ -66,7 +66,7 @@ const List: FC = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='col-4 col-realizada'>
+                        <div className='col-4 col-realizada text-center'>
                             <div className='board'>
                                 <div className="tasks">
                                     <a className="fs-5 text-decoration-none text-dark" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">REALIZADAS ({realizada.length})</a>
@@ -88,7 +88,7 @@ const List: FC = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='col-4 col-cancelada'>
+                        <div className='col-4 col-cancelada text-center'>
                             <div className='board'>
                                 <div className="tasks">
                                     <a className="fs-5 text-decoration-none text-dark" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">CANCELADAS ({cancelada.length})</a>
